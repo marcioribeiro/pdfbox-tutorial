@@ -1,13 +1,12 @@
 package com.panteracode.pdfbox;
 
-import java.io.IOException;
-
-import org.apache.pdfbox.exceptions.COSVisitorException;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
-import org.apache.pdfbox.pdmodel.edit.PDPageContentStream;
+import org.apache.pdfbox.pdmodel.PDPageContentStream;
 import org.apache.pdfbox.pdmodel.font.PDFont;
 import org.apache.pdfbox.pdmodel.font.PDType1Font;
+
+import java.io.IOException;
 /**
  * 
  * @author Marcio Ribeiro
@@ -24,23 +23,20 @@ public class DocumentoPdf {
 			//seleciona a fonte usada no documento
 			PDFont font = PDType1Font.COURIER;
 			
-			PDPageContentStream contentStream = new PDPageContentStream(documento,pag);
+			PDPageContentStream contentStream = new PDPageContentStream(documento, pag);
 			
 			contentStream.beginText();
 			contentStream.setFont(font, 13);
-			contentStream.moveTextPositionByAmount(10,700);
-			contentStream.drawString("Olá Mundo !");
+			contentStream.showText("Vamos escrever algo no PDF?");
+
 			/*contentStream.moveTextPositionByAmount(10,20);
 			contentStream.drawLine(10,25,90,90);*/
 			contentStream.endText();
 			
 			contentStream.close();
-			documento.save("primeiro doc.pdf");
+			documento.save("PDF-DOC.pdf");
 			documento.close();
 		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (COSVisitorException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
